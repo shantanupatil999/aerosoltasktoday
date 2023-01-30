@@ -1,0 +1,77 @@
+﻿@model IEnumerable<aerosoltasktoday.Models.Data_context.sp_aerosol_Result>
+
+@{
+    ViewBag.Title = "Report";
+}
+<br />
+<br />
+@using(Html.BeginForm("Search", "Employee", FormMethod.Get))
+            {
+                @Html.TextBox("searching")<input type="submit" value="Search" />
+            }
+
+
+
+<h2>Report</h2>
+
+<p>
+    @Html.ActionLink("Register Here!", "Index")
+</p>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Employee_qualification)
+        </th>
+
+        <th>Action</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_salary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_birthdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Employee_qualification)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Index", new { item.Employee_Id, item.Employee_name, item.Employee_phone, item.Employee_salary, item.Employee_birthdate, item.Employee_email, item.Employee_qualification}) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Employee_Id })
+        </td>
+    </tr>
+}
+
+</table>

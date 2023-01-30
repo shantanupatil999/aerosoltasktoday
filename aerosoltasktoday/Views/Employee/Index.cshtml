@@ -1,0 +1,71 @@
+﻿@model aerosoltasktoday.Models.Data_context.aerosol_table
+@{
+    ViewBag.Title = "Index";
+}
+@using (Html.BeginForm("Add", "Employee", FormMethod.Post))
+{
+    <head>
+
+<script src="~/Scripts/jquery-3.4.1.intellisense.js"></script>
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/External JS/externalJS.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+        
+
+    </head>
+    <h2>Registration</h2>
+    <div class="container">
+        @Html.HiddenFor(m=>m.Employee_Id)
+        <div>
+            <label>Employee Name</label>
+            @Html.TextBoxFor(m => m.Employee_name, new { @class = "form-control", id = "idname", placeholder="Enter the Name" })
+        </div>
+        <div>
+            <label>Employee Phone number</label>
+            @Html.TextBoxFor(m => m.Employee_phone, new { @class = "form-control", id = "idnumber" , placeholder = "Enter the Phone number" })
+        </div>
+        <div>
+            <label>Employee Salary</label>
+            @Html.TextBoxFor(m => m.Employee_salary, new { @class = "form-control", id = "idsalary", placeholder = "Enter the Salary Amount" })
+        </div>
+        <div>
+            <label>Employee Date of Birth</label>
+            @Html.TextBoxFor(m => m.Employee_birthdate, new { @class = "form-control", id = "iddob", type="date", placeholder = "Enter the Date of birth" })
+        </div>
+        <div>
+            <label>Employee E-mail</label>
+            @Html.TextBoxFor(m => m.Employee_email, new { @class = "form-control", id = "idemail", type="email", placeholder = "Enter the Email" })
+        </div>
+        <br />
+        <div>
+            <lable><b>State</b></lable>
+            @Html.DropDownListFor(
+            m => m.Employee_qualification,
+            new SelectList(
+            new List<Object>
+                { 
+                new { value = "0" , text = "--SELECT--"  },
+                new { value = "B.E" , text = "B.E" },
+                new { value = "B.A." , text = "B.A."},
+                new { value = "M.Sc" , text = "M.Sc"},
+                new { value = "B.Sc" , text = "B.Sc"},
+                new { value = "M.Tech" , text = "M.Tech"},
+                new { value = "M.A" , text = "M.A"},
+                new { value = "B.Tech" , text = "B.Tech"}
+                },
+                "value",
+                "text", 
+                Model.Employee_qualification
+                )
+                )
+            <br />
+            <br />
+            <div>
+                <button type="submit" class="btn btn-success" onclick="foo()">Save</button>
+            </div>
+
+        </div>
+        </div>
+}
+
